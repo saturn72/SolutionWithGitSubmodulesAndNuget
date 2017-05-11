@@ -16,9 +16,21 @@ We found quite convenience solution for this problem by using symbolic link feat
 </ol>
 This is the general pattern of the post-build event (batch syntax):
 
-<code>
+```batch
 SET sourceDir=$(SolutionDir)packages
-SET destDir=$(SolutionDir)..\..\&lt;all_submodules_root_directory&gt;\&lt;specific_submodule_directory&gt;\&lt;solution_directory&gt;\packages
-SET remDirCmd=rmDir %destDir%</code>
+SET destDir=$(SolutionDir)..\..\<all_submodules_root_directory>\<specific_submodule_directory>\<solution_directory>\packages
+SET remDirCmd=rmDir %destDir%
+
+MKLINK /j %destDir% %sourceDir%
+```
+## Example
+
+```batch
+SET sourceDir=$(SolutionDir)packages
+SET destDir=$(SolutionDir)..\..\submodules\saturn72.extensions\src\packages
+SET remDirCmd=rmDir %destDir%
+
+MKLINK /j %destDir% %sourceDir%
+```
 
 A sample project was uploaded to our <a href="https://github.com/saturn72">github </a>space, so feel free to check it out: <a href="https://github.com/saturn72/SolutionWithGitSubmodulesAndNuget">SolutionWithGitSubmodulesAndNuget</a>
