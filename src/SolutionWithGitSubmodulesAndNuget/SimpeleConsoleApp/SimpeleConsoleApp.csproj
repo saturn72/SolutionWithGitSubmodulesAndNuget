@@ -60,11 +60,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>SET sourceDir=$(SolutionDir)packages
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>SET sourceDir=$(SolutionDir)packages
 SET destDir=$(SolutionDir)..\..\submodules\saturn72.extensions\src\packages
 SET remDirCmd=rmDir %25destDir%25
 
-mklink /j %25destDir%25 %25sourceDir%25</PostBuildEvent>
+mklink /j %25destDir%25 %25sourceDir%25</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
