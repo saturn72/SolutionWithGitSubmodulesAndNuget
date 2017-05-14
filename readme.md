@@ -11,10 +11,10 @@ We found quite convenience solution for this problem by using symbolic link feat
 
 2 important things to bare in mind:
 <ol>
-	<li>The creation of the symbolic link should be done separately from the code executed (we are using Post-build-event of the startup project)</li>
+	<li>The creation of the symbolic link should be done separately from the code executed (we are using Pre-build-event of the startup project)</li>
 	<li>All submodules  root directories need to be known</li>
 </ol>
-This is the general pattern of the post-build event (batch syntax):
+This is the general pattern of the pre-build event (batch syntax):
 
 ```batch
 SET sourceDir=$(SolutionDir)packages
