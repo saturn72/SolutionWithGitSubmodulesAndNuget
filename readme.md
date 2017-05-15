@@ -28,9 +28,10 @@ MKLINK /j %destDir% %sourceDir%
 ```batch
 SET sourceDir=$(SolutionDir)packages
 SET destDir=$(SolutionDir)..\..\submodules\saturn72.extensions\src\packages
-SET remDirCmd=rmDir %destDir%
 
-MKLINK /j %destDir% %sourceDir%
+if not exist %sourceDir% mkdir %sourceDir%
+
+if not exist %destDir% mklink /j %destDir% %sourceDir%
 ```
 
 A sample project was uploaded to our <a href="https://github.com/saturn72">github </a>space, so feel free to check it out: <a href="https://github.com/saturn72/SolutionWithGitSubmodulesAndNuget">SolutionWithGitSubmodulesAndNuget</a>
